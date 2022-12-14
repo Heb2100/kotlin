@@ -39,34 +39,15 @@ class MainActivity : AppCompatActivity() {
                 )
             }
             else{ // 권한이 있음
-                openCamera()
+                val Request_image_capture = 1
+                Intent(MediaStore.ACTION_IMAGE_CAPTURE).also{ takePictureIntent
+
 
                 }
             }
         }
 
-    private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
 
-        createImageUri(newFileName(), "image/jpg")?.let {
-
-        }
-
-    }
-
-    private fun newFileName(): String {
-        val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
-        val filename = sdf.format(System.currentTimeMillis())
-        return "$filename.jpg"
-
-    }
-
-    private fun createImageUri(filename : String, mimeType : String) : Uri? {
-        var values = ContentValues()
-        values.put(MediaStore.Images.Media.DISPLAY_NAME, filename)
-        values.put(MediaStore.Images.Media.MIME_TYPE, mimeType)
-        return this.contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-    }
 
 //        camera_on_btn.setOnClickListener {
 //            val cameraPermissionCheck = ContextCompat.checkSelfPermission(
